@@ -52,7 +52,7 @@
     </header>
     <main>
         <!-- Carrusel -->
-        <!-- Imagenes, titulo < 768px -->
+        <!-- ¿Objet fit, titulo<768px? -->
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -120,30 +120,30 @@
             </button>
         </div>
         <!-- Barra checkbox y busqueda -->
+        <!-- ¿Color label, lupa?-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between" id="check">
                         <div>
                             <input type="checkbox" id="cbox1" value="checkbox1" />
-                            <label for="cbox1">Deporte</label>
+                            <label for="cbox1">Sport</label>
                         </div>
                         <div>
                             <input type="checkbox" id="cbox2" value="checkbox2" />
-                            <label for="cbox2">Arte</label>
+                            <label for="cbox2">Art</label>
                         </div>
                         <div>
                             <input type="checkbox" id="cbox3" value="checkbox3" />
-                            <label for="cbox3">Entretenimiento</label>
+                            <label for="cbox3">Entertainment</label>
                         </div>
                         <div>
                             <input type="checkbox" id="cbox4" value="checkbox4" />
-                            <label for="cbox4">-----</label>
+                            <label for="cbox4">Concerts</label>
                         </div>
                         <div>
                             <input type="checkbox" id="cbox5" value="checkbox5" />
-                            <label for="cbox5">-----</label>
+                            <label for="cbox5">History</label>
                         </div>
                     </ul>
 
@@ -155,47 +155,57 @@
             </div>
         </nav>
         <!-- Tarjetas -->
-        <div class="row row-cols-1 row-cols-md-4 g-0 d-flex justify-content-evenly align-items-center">
+        <div class="row row-cols-1 row-cols-md-4 g-0 d-flex align-items-center justify-content-evenly" id="contenTarj">
             <div class="col">
                 <div class="card h-100">
                     <img src="/amazingEventsAaronSanchez/images/books.jpg" class="card-img-top" alt="books">
                     <div class="card-body">
-                        <h3 class="card-title">Books</h3>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        <h4 class="card-title">School Book Fair</h4>
+                        <p class="card-text">Bring your unused school book and bring the one you need.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="card-text">Price: 1</h6>
+                            <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-20">
-                    <img src="/amazingEventsAaronSanchez/images/cinema.jpg" class="card-img-top" alt="cinema">
+                <div class="card h-100">
+                    <img src="/amazingEventsAaronSanchez/images/music_concert.jpg" class="card-img-top" alt="concert">
                     <div class="card-body">
-                        <h3 class="card-title">Cinema</h3>
-                        <p class="card-text">This is a short card.</p>
-                        <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        <h4 class="card-title">Metallica in concert</h4>
+                        <p class="card-text">The only concert of the most emblematic band in the world</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="card-text">Price: 150</h6>
+                            <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 h-50">
+                <div class="card h-100">
                     <img src="/amazingEventsAaronSanchez/images/costume_party.jpg" class="card-img-top"
                         alt="costumeParty">
                     <div class="card-body">
-                        <h3 class="card-title">Cirque</h3>
-                        <p class="card-text">This </p>
-                        <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        <h4 class="card-title">Halloween Night</h4>
+                        <p class="card-text">Come in your scariest costume character to win amazing prizes.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="card-text">Price: 12</h6>
+                            <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-50">
+                <div class="card h-200 w-200">
                     <img src="/amazingEventsAaronSanchez/images/marathon.jpg" class="card-img-top" alt="marathon">
                     <div class="card-body">
-                        <h3 class="card-title">Marathon</h3>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        <h4 class="card-title">10K for life</h4>
+                        <p class="card-text">Come and exercise, improve your health and lifestyle.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="card-text">Price: 3</h6>
+                            <a href="/amazingEventsAaronSanchez/details.html" class="btn btn-primary">Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,19 +217,18 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid d-flex justify-content-between">
                 <div>
-                    <a class="navbar-brand" href="facebook.com">
-                        <img src="/amazingEventsAaronSanchez/images/facebook.png" alt="facebook" width="30" height="24">
+                    <a class="navbar-brand" href="https://www.facebook.com/?locale=es_LA">
+                        <img src="/amazingEventsAaronSanchez/images/facebook.png" alt="facebook" width="30">
                     </a>
-                    <a class="navbar-brand" href="instagram.com">
-                        <img src="/amazingEventsAaronSanchez/images/instagram.png" alt="instagram" width="30"
-                            height="24">
+                    <a class="navbar-brand" href="https://www.instagram.com/">
+                        <img src="/amazingEventsAaronSanchez/images/instagram.png" alt="instagram" width="30">
                     </a>
-                    <a class="navbar-brand" href="ws">
-                        <img src="/amazingEventsAaronSanchez/images/whatsapp.png" alt="Whatsapp" width="30" height="24">
+                    <a class="navbar-brand" href="https://wa.me/10101010">
+                        <img src="/amazingEventsAaronSanchez/images/whatsapp.png" alt="Whatsapp" width="30">
                     </a>
                 </div>
                 <div>
-                    <h5>Created by: Aaron Sanchez</h5>
+                    <h7>COHORT3: Aaron Sanchez</h7>
                 </div>
             </div>
         </nav>

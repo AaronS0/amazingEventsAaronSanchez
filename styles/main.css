@@ -1,20 +1,38 @@
 .carousel-item{
     height: 30vh;
 }
+/* Contenedor tarjetas */
+#contenTarj{
+    height: 80vh;
+}
+/* Tarjetas */
 .col{
     width: 20vw;
 }
 #check{
-    border: solid 2px blue;
-    width: 50vw;
+    width: 55vw;
 }
-.row{
-    border: solid 2px white;
-    height: 80vh;
+#check, h7{
+    color: whitesmoke;
 }
 body{
     background-color: darkgray;
 }
 .navbar-nav{
     width: 50;
+}
+#form{
+    width: 40vw; height: 70vh;
+    color: black;
+    margin-left: 30vw;
+}
+#detail, #tabla{
+    width: 85vw;
+    margin-top: 3vh;
+}
+#tabla{
+    margin-left: 7.5vw;
+}
+td, th, tr{
+    border: solid 1px whitesmoke;
 }
