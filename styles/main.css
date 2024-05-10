@@ -1,19 +1,18 @@
 .carousel-item{
     height: 30vh;
 }
-/* Contenedor tarjetas */
-#contenTarj{
-    height: 80vh;
-}
 /* Tarjetas */
 .col{
     width: 20vw;
+    height: 78vh;
+    margin: 2vw;
+}
+#check, #cohort{
+    color: whitesmoke;
+    width: 15vw;
 }
 #check{
     width: 55vw;
-}
-#check, h7{
-    color: whitesmoke;
 }
 body{
     background-color: darkgray;
