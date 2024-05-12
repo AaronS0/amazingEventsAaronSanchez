@@ -1,24 +1,29 @@
-.carousel-item{
-    height: 30vh;
-}
-/* Tarjetas */
-.col{
-    width: 20vw;
-    height: 78vh;
-    margin: 2vw;
-}
-#check, #cohort{
-    color: whitesmoke;
-    width: 15vw;
-}
-#check{
-    width: 55vw;
-}
 body{
     background-color: darkgray;
 }
 .navbar-nav{
     width: 50;
+}
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4vw;
+    color: darkgray;
+}
+.carousel-item{
+    height: 40vh;
+}
+.col{
+    width: 20vw;
+    height: 60vh;
+    margin: 2vw;
+}
+#check, #cohort{
+    color: whitesmoke;
+    width: 15vw;
+    margin: 0;
+}
+#check{
+    width: 55vw;
 }
 #form{
     width: 40vw; height: 70vh;

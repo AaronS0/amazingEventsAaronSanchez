@@ -194,8 +194,18 @@ const data = {
         },
     ],
 }
+
+let date = data.currentDate
 let info = data.events
 let contenTarj = document.getElementById("contenTarj")
+let pastEvents = []
+
+
+for (let i = 0; i < info.length; i++) {
+    if (date > info[i].date) {
+        pastEvents.push(info[i])
+    }
+}
 
 function crearTarjeta(contenedorTarjeta, info) {
     let nuevoContenedor = document.createElement("div")
@@ -218,9 +228,9 @@ function crearTarjeta(contenedorTarjeta, info) {
 }
 
 function pintarTarjetas(arreglo, contenedorTarjeta) {
-    for (let i = 0; i < info.length; i++) {
-        crearTarjeta(contenTarj, info[i])        
+    for (let i = 0; i < pastEvents.length; i++) {
+            crearTarjeta(contenTarj, pastEvents[i])  
     }
 }
 
-pintarTarjetas(info, contenTarj)
+pintarTarjetas(pastEvents, contenTarj)
