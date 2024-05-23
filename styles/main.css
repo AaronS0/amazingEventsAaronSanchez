@@ -26,7 +26,7 @@ h2 {
 
 .col {
     width: 20vw;
-    height: 60vh;
+    height: 70vh;
     margin: 2vw;
 }
 
@@ -38,7 +38,7 @@ h2 {
 }
 
 #check {
-    width: 55vw;
+    width: 70vw;
 }
 
 #form {
@@ -48,7 +48,7 @@ h2 {
     margin-left: 30vw;
 }
 
-#detail,
+#details,
 #tabla {
     width: 85vw;
     margin-top: 3vh;

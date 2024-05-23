@@ -196,21 +196,25 @@ const data = {
 }
 let info = data.events
 let contenTarj = document.getElementById("contenTarj")
+let checkbox = document.getElementById("check")
+let checkFiltro = []
+let buscar = document.getElementById("busqueda")
+
 
 function crearTarjeta(contenedorTarjeta, info) {
     let nuevoContenedor = document.createElement("div")
     nuevoContenedor.className = "col"
     nuevoContenedor.innerHTML = `
         <div class="card me-3 my-1 h-100 cards-i">
-            <img src = "${info.image}" class="card-img-top" alt = "imageEvent" style="height: 35%;">
-            <div class="card-body">
+            <img src = "${info.image}" class="card-img-top" alt="${info.name}" style="height: 35%;">
+            <div class="card-body d-flex flex-column justify-content-around" style="height: 65%;">
                 <h4 class="card-title">${info.name}</h4>
                 <p class="card-text">${info.description}</p>
                 <p class="card-text">Date: ${info.date}</p>
                 <p class="card-text">Category: ${info.category}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="card-text">Price: ${info.price}</h6>
-                    <a href="./details.html" class="btn btn-primary">Details</a>
+                    <a href="/details.html?value=${info._id}" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div> `
@@ -218,9 +222,56 @@ function crearTarjeta(contenedorTarjeta, info) {
 }
 
 function pintarTarjetas(arreglo, contenedorTarjeta) {
-    for (let i = 0; i < info.length; i++) {
-        crearTarjeta(contenTarj, info[i])        
+    contenedorTarjeta.innerHTML = ""
+    for (let i = 0; i < arreglo.length; i++) {
+        crearTarjeta(contenTarj, arreglo[i])
     }
 }
-
 pintarTarjetas(info, contenTarj)
+
+checkbox.addEventListener("change", () => {
+    let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
+    let eventosFiltrados = info.filter(filtro => {
+        for (let i = 0; i < checkboxChecked.length; i++) {
+            if (checkboxChecked[i].value == filtro.category) {
+                return filtro
+            }
+        }
+    })
+    if (checkboxChecked.length == 0) {
+        pintarTarjetas(info, contenTarj)
+    } else {
+        pintarTarjetas(eventosFiltrados, contenTarj)
+    }
+})
+
+buscar.addEventListener('input', (filtroBusqueda) => {
+    eventosFiltrados = info.filter(event => event.name.toLowerCase().includes(filtroBusqueda.target.value.toLowerCase()))
+    if (filtroBusqueda.target.value != "") {
+        pintarTarjetas(eventosFiltrados, contenTarj)
+    } else {
+        pintarTarjetas(info, contenTarj)
+    }
+})
+
+info.forEach(filtrar => {
+    if (!checkFiltro.includes(filtrar.category)) {
+        checkFiltro.push(filtrar.category)
+    }
+})
+
+function crearCheck(contenedorCheck, categorias) {
+    let nuevoContenedorCheck = document.createElement("li")
+    nuevoContenedorCheck.innerHTML = `
+        <input type="checkbox" value="${categorias}">
+        <label for="cbox">${categorias}</label>`
+    checkbox.appendChild(nuevoContenedorCheck)
+}
+
+function pintarCheck(arregloCheck, contenedorCheck) {
+    contenedorCheck.innerHTML = ""
+    for (let i = 0; i < arregloCheck.length; i++) {
+        crearCheck(checkbox, arregloCheck[i])
+    }
+}
+pintarCheck(checkFiltro, checkbox)

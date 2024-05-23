@@ -195,91 +195,34 @@ const data = {
     ],
 }
 
-let date = data.currentDate
 let info = data.events
-let contenTarj = document.getElementById("contenTarj")
-let upcomingEvents = []
-let checkbox = document.getElementById("check")
-let checkFiltro = []
-let buscar = document.getElementById("busqueda")
+let contenDetails = document.getElementById("details")
+let idDetails = window.location.href
+idDetails = new URL(idDetails).searchParams.get("value")
 
-for (let i = 0; i < info.length; i++) {
-    if (date < info[i].date) {
-        upcomingEvents.push(info[i])
-    }
-}
-
-function crearTarjeta(contenedorTarjeta, info) {
-    let nuevoContenedor = document.createElement("div")
-    nuevoContenedor.className = "col"
-    nuevoContenedor.innerHTML = `
-        <div class="card me-3 my-1 h-100 cards-i">
-            <img src = "${info.image}" class="card-img-top" alt="${info.name}" style="height: 35%;">
-            <div class="card-body d-flex flex-column justify-content-around" style="height: 65%;">
-                <h4 class="card-title">${info.name}</h4>
-                <p class="card-text">${info.description}</p>
-                <p class="card-text">Date: ${info.date}</p>
-                <p class="card-text">Category: ${info.category}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="card-text">Price: ${info.price}</h6>
-                    <a href="./details.html?value=${info._id}" class="btn btn-primary">Details</a>
+document.addEventListener("DOMContentLoaded", ()=>{
+    let card = info.filter(evento => evento._id == idDetails)
+    card.forEach(evento => {
+        let contenedorDetails = document.createElement("div")
+        contenedorDetails.className = "row g-0"
+        contenedorDetails.innerHTML = `
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <img src="${evento.image}" class="img-fluid" alt="${evento.category}">
                 </div>
-            </div>
-        </div> `
-    contenedorTarjeta.appendChild(nuevoContenedor)
-}
-
-function pintarTarjetas(arreglo, contenedorTarjeta) {
-    contenedorTarjeta.innerHTML = ""
-    for (let i = 0; i < arreglo.length; i++) {
-            crearTarjeta(contenTarj, arreglo[i])  
-    }
-}
-pintarTarjetas(upcomingEvents, contenTarj)
-
-checkbox.addEventListener("change", (funcion) => {
-    let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
-    let eventosFiltrados = upcomingEvents.filter(filtro => {
-        for (let i = 0; i < checkboxChecked.length; i++) {
-            if (checkboxChecked[i].value == filtro.category) {
-                return filtro
-            }
-        }
+                <div class="col-md-4 d-flex">
+                    <div class="card-body d-flex flex-column justify-content-around">
+                        <h3 class="card-title">${evento.name}</h3>
+                        <p class="card-text">${evento.description}</p>
+                        <p>Date: ${evento.date < data.currentDate ? "This event has already passed" : evento.date}</p>
+                        <p>Category: ${evento.category}</p>
+                        <p>Place: ${evento.place}</p>
+                        <p>Capacity: ${evento.capacity}</p>
+                        <p>${evento.date < data.currentDate ? "Assistance: " : "Estimate: "}${evento.assistance || evento.estimate}</p>
+                        <p>Price: ${evento.price}</p>
+                    </div>
+                </div>
+            </div>`
+        contenDetails.appendChild(contenedorDetails)
     })
-    if (checkboxChecked.length == 0) {
-        pintarTarjetas(upcomingEvents, contenTarj)
-    } else {
-        pintarTarjetas(eventosFiltrados, contenTarj)
-    }
 })
-
-buscar.addEventListener('input', (filtroBusqueda) => {
-    eventosFiltrados = upcomingEvents.filter(event => event.name.toLowerCase().includes(filtroBusqueda.target.value.toLowerCase()))
-    if (filtroBusqueda.target.value != "") {
-        pintarTarjetas(eventosFiltrados, contenTarj)
-    } else {
-        pintarTarjetas(upcomingEvents, contenTarj)
-    }
-})
-
-upcomingEvents.forEach(filtrar => {
-    if (!checkFiltro.includes(filtrar.category)) {
-        checkFiltro.push(filtrar.category)
-    }
-})
-
-function crearCheck(contenedorCheck, categorias) {
-    let nuevoContenedorCheck = document.createElement("li")
-    nuevoContenedorCheck.innerHTML = `
-        <input type="checkbox" value="${categorias}">
-        <label for="cbox">${categorias}</label>`
-    checkbox.appendChild(nuevoContenedorCheck)
-}
-
-function pintarCheck(arregloCheck, contenedorCheck) {
-    contenedorCheck.innerHTML = ""
-    for (let i = 0; i < arregloCheck.length; i++) {
-        crearCheck(checkbox, arregloCheck[i])
-    }
-}
-pintarCheck(checkFiltro, checkbox)
