@@ -237,26 +237,29 @@ function pintarTarjetas(arreglo, contenedorTarjeta) {
 }
 pintarTarjetas(upcomingEvents, contenTarj)
 
-checkbox.addEventListener("change", (funcion) => {
+checkbox.addEventListener('change', () => {
+    let eventosFiltrados = upcomingEvents
     let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
-    let eventosFiltrados = upcomingEvents.filter(filtro => {
-        for (let i = 0; i < checkboxChecked.length; i++) {
-            if (checkboxChecked[i].value == filtro.category) {
-                return filtro
-            }
-        }
-    })
-    if (checkboxChecked.length == 0) {
-        pintarTarjetas(upcomingEvents, contenTarj)
-    } else {
-        pintarTarjetas(eventosFiltrados, contenTarj)
+    
+    if (checkboxChecked.length != 0) {
+        eventosFiltrados = filtrarCheck(checkboxChecked, upcomingEvents)
     }
+    let texto = document.getElementById("busqueda").value
+    if (texto != "") {
+        eventosFiltrados = filtrarText(texto, eventosFiltrados)
+    }
+    pintarTarjetas(eventosFiltrados, contenTarj)
 })
 
 buscar.addEventListener('input', (filtroBusqueda) => {
-    eventosFiltrados = upcomingEvents.filter(event => event.name.toLowerCase().includes(filtroBusqueda.target.value.toLowerCase()))
-    if (filtroBusqueda.target.value != "") {
-        pintarTarjetas(eventosFiltrados, contenTarj)
+    let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
+    let texto = document.getElementById("busqueda").value
+    let eventosFiltrados2 = filtrarText(texto, upcomingEvents)
+    if (checkboxChecked.length != 0) {
+        eventosFiltrados2 = filtrarCheck(checkboxChecked, eventosFiltrados2)
+        
+    } if (filtroBusqueda.target.value != "") {
+        pintarTarjetas(eventosFiltrados2, contenTarj)
     } else {
         pintarTarjetas(upcomingEvents, contenTarj)
     }
@@ -283,3 +286,15 @@ function pintarCheck(arregloCheck, contenedorCheck) {
     }
 }
 pintarCheck(checkFiltro, checkbox)
+
+function filtrarCheck(arregloEventos, arreglo) {
+    arregloEventos = Array.from(arregloEventos)
+    arregloEventos = arregloEventos.map(checkbox => checkbox.value)
+    let eventosFiltrados = arreglo.filter(upcomingEvents => arregloEventos.includes(upcomingEvents.category))
+    return eventosFiltrados
+}
+
+function filtrarText(texto, arreglo) {
+    let eventosFiltrados2 = arreglo.filter(upcomingEvents => upcomingEvents.name.toLowerCase().includes(texto.toLowerCase()))
+    return eventosFiltrados2
+}

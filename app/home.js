@@ -229,26 +229,29 @@ function pintarTarjetas(arreglo, contenedorTarjeta) {
 }
 pintarTarjetas(info, contenTarj)
 
-checkbox.addEventListener("change", () => {
+checkbox.addEventListener('change', () => {
+    let eventosFiltrados = info
     let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
-    let eventosFiltrados = info.filter(filtro => {
-        for (let i = 0; i < checkboxChecked.length; i++) {
-            if (checkboxChecked[i].value == filtro.category) {
-                return filtro
-            }
-        }
-    })
-    if (checkboxChecked.length == 0) {
-        pintarTarjetas(info, contenTarj)
-    } else {
-        pintarTarjetas(eventosFiltrados, contenTarj)
+    
+    if (checkboxChecked.length != 0) {
+        eventosFiltrados = filtrarCheck(checkboxChecked, info)
     }
+    let texto = document.getElementById("busqueda").value
+    if (texto != "") {
+        eventosFiltrados = filtrarText(texto, eventosFiltrados)
+    }
+    pintarTarjetas(eventosFiltrados, contenTarj)
 })
 
 buscar.addEventListener('input', (filtroBusqueda) => {
-    eventosFiltrados = info.filter(event => event.name.toLowerCase().includes(filtroBusqueda.target.value.toLowerCase()))
-    if (filtroBusqueda.target.value != "") {
-        pintarTarjetas(eventosFiltrados, contenTarj)
+    let checkboxChecked = document.querySelectorAll("input[type=checkbox]:checked")
+    let texto = document.getElementById("busqueda").value
+    let eventosFiltrados2 = filtrarText(texto, info)
+    if (checkboxChecked.length != 0) {
+        eventosFiltrados2 = filtrarCheck(checkboxChecked, eventosFiltrados2)
+        
+    } if (filtroBusqueda.target.value != "") {
+        pintarTarjetas(eventosFiltrados2, contenTarj)
     } else {
         pintarTarjetas(info, contenTarj)
     }
@@ -275,3 +278,15 @@ function pintarCheck(arregloCheck, contenedorCheck) {
     }
 }
 pintarCheck(checkFiltro, checkbox)
+
+function filtrarCheck(arregloEventos, arreglo) {
+    arregloEventos = Array.from(arregloEventos)
+    arregloEventos = arregloEventos.map(checkbox => checkbox.value)
+    let eventosFiltrados = arreglo.filter(info => arregloEventos.includes(info.category))
+    return eventosFiltrados
+}
+
+function filtrarText(texto, arreglo) {
+    let eventosFiltrados2 = arreglo.filter(info => info.name.toLowerCase().includes(texto.toLowerCase()))
+    return eventosFiltrados2
+}
