@@ -261,7 +261,7 @@ buscar.addEventListener('input', (filtroBusqueda) => {
     } if (filtroBusqueda.target.value != "") {
         pintarTarjetas(eventosFiltrados2, contenTarj)
     } else {
-        pintarTarjetas(upcomingEvents, contenTarj)
+        pintarTarjetas(eventosFiltrados2, contenTarj)
     }
 })
 

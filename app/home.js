@@ -253,9 +253,20 @@ buscar.addEventListener('input', (filtroBusqueda) => {
     } if (filtroBusqueda.target.value != "") {
         pintarTarjetas(eventosFiltrados2, contenTarj)
     } else {
-        pintarTarjetas(info, contenTarj)
+        pintarTarjetas(eventosFiltrados2, contenTarj)
+    } if (eventosFiltrados2 == "") {
+        showAlert("No events match the filters");
     }
 })
+
+function showAlert(message) {
+    contenTarj.innerHTML = "";
+    const alert = document.createElement("div");
+    alert.className = "alert alert-info p-4 my-5";
+    alert.setAttribute("role", "alert");
+    alert.innerText = message;
+    contenTarj.appendChild(alert);
+}
 
 info.forEach(filtrar => {
     if (!checkFiltro.includes(filtrar.category)) {
