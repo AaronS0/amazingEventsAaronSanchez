@@ -263,8 +263,19 @@ buscar.addEventListener('input', (filtroBusqueda) => {
         pintarTarjetas(eventosFiltrados2, contenTarj)
     } else {
         pintarTarjetas(eventosFiltrados2, contenTarj)
+    } if (eventosFiltrados2 == "") {
+        showAlert("No events match the filters");
     }
 })
+
+function showAlert(message) {
+    contenTarj.innerHTML = "";
+    const alert = document.createElement("div");
+    alert.className = "alert alert-info p-4 my-5";
+    alert.setAttribute("role", "alert");
+    alert.innerText = message;
+    contenTarj.appendChild(alert);
+}
 
 pastEvents.forEach(filtrar => {
     if (!checkFiltro.includes(filtrar.category)) {
