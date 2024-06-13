@@ -10,10 +10,7 @@ let buscar = document.getElementById("busqueda")
 
 fetch(urlData).then(response => response.json())
     .then(data => {
-        let info = data.events
-        let date = data.currentDate
-
-        upcomingEvents = functions.filtrarUpcoming(info, date)
+        upcomingEvents = functions.filtrarUpcoming(data.events, data.currentDate)
         functions.pintarTarjetas(upcomingEvents, contenTarj)
         functions.filtrarCheckCategoria(upcomingEvents, checkFiltro)
         functions.pintarCheck(checkFiltro, checkbox)

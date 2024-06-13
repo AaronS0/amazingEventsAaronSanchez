@@ -9,11 +9,9 @@ let buscar = document.getElementById("busqueda")
 
 fetch(urlData).then(response => response.json())
     .then(data => {
-        let info = data.events
-        console.log();
-        functions.pintarTarjetas(info, contenTarj)
-        functions.filtrarCheckCategoria(info, checkFiltro)
+        functions.pintarTarjetas(data.events, contenTarj)
+        functions.filtrarCheckCategoria(data.events, checkFiltro)
         functions.pintarCheck(checkFiltro, checkbox)
-        checkbox.addEventListener('change', () => functions.filtrarEventos(info))
-        buscar.addEventListener('input', (filtroBusqueda) => functions.filtrarEventoTexto(filtroBusqueda, info))
+        checkbox.addEventListener('change', () => functions.filtrarEventos(data.events))
+        buscar.addEventListener('input', (filtroBusqueda) => functions.filtrarEventoTexto(filtroBusqueda, data.events))
     })

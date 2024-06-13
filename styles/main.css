@@ -54,8 +54,10 @@ h2 {
     margin-top: 3vh;
 }
 
-#tabla {
+.table {
+    width: 85vw;
     margin-left: 7.5vw;
+    margin-top: 3vh;
 }
 
 td,
